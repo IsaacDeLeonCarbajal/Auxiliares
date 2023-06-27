@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RedesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(RedesController::class)->group(function () {
+    Route::get('/direcciones/{clase?}/{cantidad?}', 'obtenerDirecciones');
+    
+    Route::get('/subneteo/{clase?}/{subredes?}', 'obtenerSubneteo');
 });
